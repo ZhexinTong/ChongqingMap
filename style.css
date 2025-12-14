@@ -1,0 +1,155 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: sans-serif;
+}
+
+#container {
+  display: flex;
+}
+
+#text {
+  width: 40%;
+}
+
+#landing {
+  height: 100vh;
+}
+
+.step {
+  height: 100vh;
+  padding: 40px;
+  font-size: 22px;
+}
+
+#map {
+  position: sticky;
+  top: 0;
+  width: 60%;
+  height: 100vh;
+}
+
+/* hide Leaflet UI initially */
+.leaflet-control-container {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* LANDING MODE: full-bleed map */
+body.landing-mode #container {
+  display: block;
+  height: 100vh;
+}
+
+
+body.landing-mode #text {
+  display: none;
+}
+
+body.landing-mode #map {
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* SCROLL MODE: split layout */
+body.scroll-mode #container {
+  display: flex;
+}
+
+body.scroll-mode #text {
+  display: block;
+  width: 25%;
+}
+
+body.scroll-mode #map {
+  position: sticky;
+  top: 0;
+  width: 75%;
+  height: 100vh;
+}
+
+/* LANDING BACKGROUND IMAGE */
+#landing-bg {
+  position: fixed;
+  inset: 0;
+  background-image: url("images/cq_map_1735.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+/* TITLE ON TOP */
+#landing-title {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* LEAFLET MAP BELOW LANDING AT FIRST */
+#map {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+
+#landing-title h1 {
+  font-size: 64px;
+  margin: 0;
+}
+
+#landing-title p {
+  font-size: 18px;
+  margin-top: 12px;
+}
+
+/* SCROLL SPACER */
+#scroll-spacer {
+  height: 200vh;
+}
+
+.leaflet-top.leaflet-right {
+  margin-top: 12px;
+  margin-right: 12px;
+}
+
+.leaflet-bottom.leaflet-right {
+  margin-bottom: 12px;
+  margin-right: 12px;
+}
+
+body.scroll-mode .leaflet-control-container {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#opacity-controls {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.85);
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  z-index: 1000;
+}
+
+.opacity-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.opacity-row label {
+  width: 40px;
+}

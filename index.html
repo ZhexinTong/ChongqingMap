@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Chongqing</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="landing-mode">
+  <div id="landing-bg"></div>
+
+  <!-- LANDING TITLE -->
+  <div id="landing-title">
+    <h1>Chongqing</h1>
+    <p>Pictorial City, Measured City</p>
+  </div>
+
+  <!-- SCROLL SPACER -->
+  <div id="scroll-spacer"></div>
+
+  <div id="container">
+    <div id="text"> </div>
+
+    <div id="map"></div>
+  </div>
+  
+  <div id="opacity-controls">
+    <div class="opacity-row">
+      <label>1735</label>
+      <input type="range" min="0" max="1" step="0.05" value="0.6" data-layer="base">
+    </div>
+  
+    <div class="opacity-row">
+      <label>1886</label>
+      <input type="range" min="0" max="1" step="0.05" value="0.6" data-layer="0">
+    </div>
+  
+    <div class="opacity-row">
+      <label>1943</label>
+      <input type="range" min="0" max="1" step="0.05" value="0.6" data-layer="1">
+    </div>
+  
+    <div class="opacity-row">
+      <label>1990</label>
+      <input type="range" min="0" max="1" step="0.05" value="0.6" data-layer="2">
+    </div>
+  </div>
+  
+
+  <script src="maps.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
