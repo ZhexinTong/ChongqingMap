@@ -73,8 +73,8 @@ Produced toward the end of the wartime bombing of Chongqing, this map reflects a
       {
         image: "images/features/layer3_roads.png",
         bounds: [
-          [29.531960, 106.518235],
-          [29.587826, 106.608924]
+          [29.532060, 106.5180],
+          [29.587926, 106.6087]
         ]
       }
     ]
