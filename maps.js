@@ -62,10 +62,7 @@ Mapping priorities shift toward governance, jurisdiction, and settlement density
     titleEN: "Latest Street Map of Chongqing",
     subtitle: "Republican Era",
     text: `
-Produced toward the end of the wartime bombing of Chongqing, this map reflects a city increasingly shaped by circulation and movement.
-As tourism began to grow, a more developed street network emerged as the dominant organizing structure.
-Urban space is defined through roads, intersections, and connectivity, reframing Chongqing as a navigable modern city rather than an administrative territory.
-Infrastructure and mobility replace terrain as the primary spatial logic.
+Produced toward the end of the wartime bombing of Chongqing, this map reflects a city increasingly shaped by circulation, infrastructure, and movement under crisis conditions. As Chongqing served as China’s wartime capital, rapid population growth, administrative expansion, and logistical demands required a more legible and connected street network. Roads, intersections, and routes become the dominant organizing structure, redefining urban space through connectivity and mobility rather than territorial boundaries or symbolic landscape.
     `,
     image: "images/cq_map_1943.png",
     bounds: [
