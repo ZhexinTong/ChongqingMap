@@ -83,7 +83,6 @@ scrollSteps.forEach(step => {
 
 // ---------------- OPACITY STATE (MAPS ONLY) ----------------
 const layerOpacity = {
-  base: 0.8,
   0: 0.8,
   1: 0.8,
   2: 0.8
@@ -136,10 +135,6 @@ document.querySelectorAll("#opacity-controls input").forEach(slider => {
 
     layerOpacity[key] = value;
 
-    if (key === "base") {
-      baseOverlay.setOpacity(value);
-      return;
-    }
 
     const i = Number(key);
     if (overlays[i]) {

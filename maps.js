@@ -65,7 +65,7 @@ As tourism began to grow, a more developed street network emerged as the dominan
 Urban space is defined through roads, intersections, and connectivity, reframing Chongqing as a navigable modern city rather than an administrative territory.
 Infrastructure and mobility replace terrain as the primary spatial logic.
     `,
-    image: "images/cq_map_1943.jpg",
+    image: "images/cq_map_1943.png",
     bounds: [
       [29.531960, 106.518235],
       [29.587826, 106.608924]
@@ -92,7 +92,7 @@ The city’s structure closely resembles its present-day form, with transportati
 Mapping emphasizes legibility, efficiency, and usability over historical narrative.
 Chongqing is no longer explained through terrain or administration, but through systems designed for movement, orientation, and consumption.
     `,
-    image: "images/cq_map_1990.jpg",
+    image: "images/cq_map_1990.png",
     bounds: [
       [29.529830, 106.517795],
       [29.582693, 106.595108]
