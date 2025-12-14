@@ -2,6 +2,7 @@ let virtualScroll = 0;
 let targetScroll = 0;
 
 const SCROLL_SPEED = 0.08;
+const LANDING_END = 20; // px — deterministic landing cutoff
 
 // ---------------- VIRTUAL SCROLL ----------------
 window.addEventListener(
@@ -162,20 +163,25 @@ window.addEventListener("scroll", () => {
   const y = virtualScroll;
   const t = y < 20 ? y / 20 : 1;
 
-  /* -------- LANDING -------- */
-  if (t < 1) {
-    document.body.classList.add("landing-mode");
-    document.body.classList.remove("scroll-mode");
+/* -------- LANDING -------- */
+if (y <= LANDING_END) {
+  inScrollMode = false;
+  activeIndex = -1;
 
-    landingBg.style.display = "block";
-    landingBg.style.opacity = 1 - t;
+  const t = Math.min(y / LANDING_END, 1);
 
-    title.style.opacity = 1 - t;
-    title.style.transform = `translateY(${-200 * t}px)`;
+  document.body.classList.add("landing-mode");
+  document.body.classList.remove("scroll-mode");
 
-    overlays.forEach(o => o.setOpacity(0));
-    return;
-  }
+  landingBg.style.display = "block";
+  landingBg.style.opacity = 1 - t;
+
+  title.style.opacity = 1 - t;
+  title.style.transform = `translateY(${-200 * t}px)`;
+
+  overlays.forEach(o => o.setOpacity(0));
+  return;
+}
 
   /* -------- ENTER SCROLL MODE -------- */
   if (!inScrollMode) {
