@@ -114,7 +114,7 @@ body.scroll-mode #map {
 
 /* SCROLL SPACER */
 #scroll-spacer {
-  height: 200vh;
+  height: 100vh;
 }
 
 .leaflet-top.leaflet-right {
