@@ -32,13 +32,16 @@ html, body {
 
 #feature-toggle {
   position: fixed;
-  right: 24px;
-  top: 120px;
+  top: 20px;
+  left: calc(40% + 16px); /* adjust if text column width differs */
   z-index: 1000;
-  background: rgba(255,255,255,0.9);
-  padding: 8px 12px;
+
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 10px;
   border-radius: 6px;
+
   font-size: 14px;
+  display: none;
 }
 
 /* hide Leaflet UI initially */

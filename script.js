@@ -129,25 +129,27 @@ const featureOverlays = scrollSteps.map(step => {
 });
 
 function updateFeatureToggle(activeIndex) {
-  // hide on landing only
+  // hide on landing
   if (activeIndex < 0) {
+    featureToggle.style.display = "none";
+    return;
+  }
+
+  let currentFeatures;
+
+  if (activeIndex === 0) {
+    currentFeatures = baseFeatures;
+  } else {
+    currentFeatures = featureOverlays[activeIndex - 1];
+  }
+
+  if (!currentFeatures || currentFeatures.length === 0) {
     featureToggle.style.display = "none";
     return;
   }
 
   featureToggle.style.display = "block";
   featureCheckbox.checked = true;
-
-  // determine which feature set applies
-  let currentFeatures = null;
-
-  if (activeIndex === 0) {
-    // 1886 → feature from 1735
-    currentFeatures = baseFeatures;
-  } else {
-    // 1943+ → feature from previous scroll step
-    currentFeatures = featureOverlays[activeIndex - 1];
-  }
 
   featureCheckbox.onchange = () => {
     currentFeatures.forEach(f => {
@@ -159,7 +161,6 @@ function updateFeatureToggle(activeIndex) {
     });
   };
 }
-
 
 // ---------------- OPACITY SLIDERS (MAPS ONLY) ----------------
 document.querySelectorAll("#opacity-controls input").forEach(slider => {
@@ -199,6 +200,9 @@ if (y <= LANDING_END) {
   inScrollMode = false;
   activeIndex = -1;
 
+  featureToggle.style.display = "none";
+  featureCheckbox.checked = false;
+  
   const t = Math.min(y / LANDING_END, 1);
 
   document.body.classList.add("landing-mode");
@@ -263,16 +267,21 @@ if (y <= LANDING_END) {
       o.setOpacity(i === activeIndex ? layerOpacity[i] : 0)
     );
 
-    // -------- FEATURES: ADD / REMOVE ONLY --------
-    featureOverlays.forEach((features, i) => {
-      features.forEach(f => {
-        if (activeIndex === i + 1) {
-          if (!map.hasLayer(f)) f.addTo(map);
-        } else {
-          if (map.hasLayer(f)) map.removeLayer(f);
-        }
-      });
+    // remove all scroll features first
+    featureOverlays.flat().forEach(f => {
+      if (map.hasLayer(f)) map.removeLayer(f);
     });
+
+    // add correct feature set
+    if (activeIndex === 0) {
+      baseFeatures.forEach(f => {
+        if (!map.hasLayer(f)) f.addTo(map);
+      });
+    } else if (featureOverlays[activeIndex - 1]) {
+      featureOverlays[activeIndex - 1].forEach(f => {
+        if (!map.hasLayer(f)) f.addTo(map);
+      });
+    }
 
     // base feature only on first scroll map
     baseFeatures.forEach(f => {
