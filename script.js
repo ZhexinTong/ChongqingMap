@@ -1,5 +1,6 @@
 let virtualScroll = 0;
 let targetScroll = 0;
+let hasEnteredFirstMap = false;
 
 const SCROLL_SPEED = 0.08;
 const LANDING_END = 20; // px — deterministic landing cutoff
@@ -129,27 +130,21 @@ const featureOverlays = scrollSteps.map(step => {
 });
 
 function updateFeatureToggle(activeIndex) {
-  // hide on landing
-  if (activeIndex < 0) {
-    featureToggle.style.display = "none";
-    return;
-  }
-
-  let currentFeatures;
-
-  if (activeIndex === 0) {
-    currentFeatures = baseFeatures;
-  } else {
-    currentFeatures = featureOverlays[activeIndex - 1];
-  }
-
-  if (!currentFeatures || currentFeatures.length === 0) {
+  if (!hasEnteredFirstMap) {
     featureToggle.style.display = "none";
     return;
   }
 
   featureToggle.style.display = "block";
   featureCheckbox.checked = true;
+
+  let currentFeatures = null;
+
+  if (activeIndex === 0) {
+    currentFeatures = baseFeatures; // 1886 shows 1735 feature
+  } else {
+    currentFeatures = featureOverlays[activeIndex - 1];
+  }
 
   featureCheckbox.onchange = () => {
     currentFeatures.forEach(f => {
@@ -199,7 +194,7 @@ window.addEventListener("scroll", () => {
 if (y <= LANDING_END) {
   inScrollMode = false;
   activeIndex = -1;
-
+  hasEnteredFirstMap = false;
   featureToggle.style.display = "none";
   featureCheckbox.checked = false;
   
@@ -221,6 +216,7 @@ if (y <= LANDING_END) {
   /* -------- ENTER SCROLL MODE -------- */
   if (!inScrollMode) {
     inScrollMode = true;
+    hasEnteredFirstMap = true;
 
     document.body.classList.remove("landing-mode");
     document.body.classList.add("scroll-mode");

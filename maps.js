@@ -20,8 +20,8 @@ Rather than precise measurement, the map emphasizes rivers, mountains, and natur
       {
         image: "images/features/layer1_wall.png",
         bounds: [
-          [29.537488, 106.512043],
-          [29.613460, 106.623204]
+          [29.534478, 106.508043],
+          [29.610450, 106.619204]
         ]
       }
     ]
@@ -40,8 +40,8 @@ Mapping priorities shift toward governance, jurisdiction, and settlement density
     `,
     image: "images/cq_map_1886.jpg",
     bounds: [
-      [29.544461, 106.492925],
-      [29.586284, 106.604402]
+      [29.540461, 106.495925],
+      [29.582284, 106.597402]
     ],
     features: [
       {

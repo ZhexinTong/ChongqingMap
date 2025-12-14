@@ -32,15 +32,15 @@ html, body {
 
 #feature-toggle {
   position: fixed;
-  top: 20px;
-  left: calc(40% + 16px); /* adjust if text column width differs */
-  z-index: 1000;
+  bottom: 130px;          /* sits above opacity-controls */
+  right: 20px;
+  z-index: 1001;
 
   background: rgba(255, 255, 255, 0.9);
   padding: 8px 10px;
   border-radius: 6px;
-
   font-size: 14px;
+
   display: none;
 }
 
@@ -48,6 +48,20 @@ html, body {
 .leaflet-control-container {
   opacity: 0;
   pointer-events: none;
+}
+
+/* hide custom UI (opacity + feature toggle) by default */
+#opacity-controls,
+#feature-toggle {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* show custom UI ONLY after scroll mode starts */
+body.scroll-mode #opacity-controls,
+body.scroll-mode #feature-toggle {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* LANDING MODE: full-bleed map */
@@ -146,6 +160,12 @@ body.scroll-mode .leaflet-control-container {
   pointer-events: auto;
 }
 
+#opacity-controls,
+#feature-toggle {
+  opacity: 0;
+  pointer-events: none;
+}
+
 #opacity-controls {
   position: fixed;
   bottom: 20px;
@@ -166,4 +186,12 @@ body.scroll-mode .leaflet-control-container {
 
 .opacity-row label {
   width: 40px;
+}
+
+body:not(.scroll-mode) #feature-toggle {
+  display: none !important
+}
+
+body.scroll-mode #feature-toggle {
+  display: block 
 }
