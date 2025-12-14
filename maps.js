@@ -30,7 +30,8 @@ Rather than precise measurement, the map emphasizes rivers, mountains, and natur
   {
     id: "imperial_1886",
     year: "1886",
-    title: "Imperial Administrative Chongqing（重庆府治全图）",
+    titleCN: "重庆府治全图",
+    titleEN: "Imperial Administrative Chongqing",
     subtitle: "Qing Dynasty",
     text: `
 By the late Qing dynasty, Chongqing is no longer merely a strategic outpost but a clearly defined administrative city.
@@ -57,7 +58,8 @@ Mapping priorities shift toward governance, jurisdiction, and settlement density
   {
     id: "republican_1943",
     year: "1943",
-    title: "Latest Chongqing Street Map（最新重庆街道图）",
+    titleCN: "最新重庆街道图",
+    titleEN: "Latest Street Map of Chongqing",
     subtitle: "Republican Era",
     text: `
 Produced toward the end of the wartime bombing of Chongqing, this map reflects a city increasingly shaped by circulation and movement.
@@ -84,7 +86,8 @@ Infrastructure and mobility replace terrain as the primary spatial logic.
   {
     id: "modern_1990",
     year: "1990",
-    title: "Chongqing Transportation & Tourism Map（重庆交通旅游图）",
+    titleCN: "重庆交通旅游图",
+    titleEN: "Chongqing Transportation & Tourism Map",
     subtitle: "Late 20th Century",
     text: `
 By 1990, Chongqing is represented as a modern, functional metropolis.

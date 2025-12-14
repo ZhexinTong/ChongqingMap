@@ -73,8 +73,9 @@ scrollSteps.forEach(step => {
   section.innerHTML = `
     <div class="step-content">
       <h2>${step.year}</h2>
-      <h3>${step.title}</h3>
-      ${step.subtitle ? `<h4>${step.subtitle}</h4>` : ""}
+      <h4 class="title-cn">${step.titleCN}</h4>
+      <h3 class="title-en">${step.titleEN}</h3>
+      ${step.subtitle ? `<h4 class="subtitle">${step.subtitle}</h4>` : ""}
       <p>${step.text}</p>
     </div>
   `;
