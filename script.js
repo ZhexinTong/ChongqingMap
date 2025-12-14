@@ -4,6 +4,8 @@ let targetScroll = 0;
 const SCROLL_SPEED = 0.08;
 const LANDING_END = 20; // px — deterministic landing cutoff
 
+
+
 // ---------------- VIRTUAL SCROLL ----------------
 window.addEventListener(
   "wheel",
@@ -126,6 +128,38 @@ const featureOverlays = scrollSteps.map(step => {
   );
 });
 
+function updateFeatureToggle(activeIndex) {
+  // hide on landing only
+  if (activeIndex < 0) {
+    featureToggle.style.display = "none";
+    return;
+  }
+
+  featureToggle.style.display = "block";
+  featureCheckbox.checked = true;
+
+  // determine which feature set applies
+  let currentFeatures = null;
+
+  if (activeIndex === 0) {
+    // 1886 → feature from 1735
+    currentFeatures = baseFeatures;
+  } else {
+    // 1943+ → feature from previous scroll step
+    currentFeatures = featureOverlays[activeIndex - 1];
+  }
+
+  featureCheckbox.onchange = () => {
+    currentFeatures.forEach(f => {
+      if (featureCheckbox.checked) {
+        if (!map.hasLayer(f)) f.addTo(map);
+      } else {
+        if (map.hasLayer(f)) map.removeLayer(f);
+      }
+    });
+  };
+}
+
 
 // ---------------- OPACITY SLIDERS (MAPS ONLY) ----------------
 document.querySelectorAll("#opacity-controls input").forEach(slider => {
@@ -143,6 +177,8 @@ document.querySelectorAll("#opacity-controls input").forEach(slider => {
   });
 });
 
+const featureToggle = document.getElementById("feature-toggle");
+const featureCheckbox = document.getElementById("feature-checkbox");
 
 // ---------------- DOM ----------------
 const sections = document.querySelectorAll(".step");
@@ -189,6 +225,7 @@ if (y <= LANDING_END) {
     title.style.opacity = 0;
 
     activeIndex = 0;
+    updateFeatureToggle(0);
 
     overlays.forEach((o, i) =>
       o.setOpacity(i === 0 ? layerOpacity[i] : 0)
@@ -219,6 +256,7 @@ if (y <= LANDING_END) {
 
   if (newIndex !== activeIndex && overlays[newIndex]) {
     activeIndex = newIndex;
+    updateFeatureToggle(activeIndex);
 
     // maps
     overlays.forEach((o, i) =>
