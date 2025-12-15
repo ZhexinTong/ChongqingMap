@@ -87,6 +87,7 @@ scrollSteps.forEach(step => {
 
 // ---------------- OPACITY STATE (MAPS ONLY) ----------------
 const layerOpacity = {
+  base: 0.6,
   0: 0.8,
   1: 0.8,
   2: 0.8
